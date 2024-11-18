@@ -17,7 +17,6 @@ class Tela3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela3)
 
-        // Solicitar permissão de localização
         checkLocationPermission()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewViagens)
@@ -41,14 +40,12 @@ class Tela3Activity : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // Caso a permissão não tenha sido concedida, solicita ao usuário
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
         } else {
-            // Permissão já concedida
             Toast.makeText(this, "Permissão de GPS concedida", Toast.LENGTH_SHORT).show()
         }
     }
